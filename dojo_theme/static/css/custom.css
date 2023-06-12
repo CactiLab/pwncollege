@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Righteous&display=swap');
+
+:root {
+    --color-accent: #5385e8;
+    --color-link: rgb(99, 192, 245);
+    --font-logo: 'Righteous', sans-serif, cursive;
+    --font-main: 'Poppins', sans-serif;
+  }
+
 body {
     background: #151515 url(../img/dojo/bkg.png) 0 0;
 }
@@ -11,7 +20,7 @@ body, table, .form-control:focus, .close {
 }
 
 .navbar-brand, .nav-link, h1, h2, .navbar-pulldown {
-    color: #b5e853 !important;
+    color: var(--color-accent) !important;
 }
 
 .navbar > .container {
@@ -19,16 +28,16 @@ body, table, .form-control:focus, .close {
 }
 
 a {
-    color: #63c0f5;
+    color: var(--link-color);
     text-shadow: 0 0 5px rgba(104,182,255,0.15);
 }
 
 nav {
-    border-bottom: 1px dashed #b5e853;
+    border-bottom: 1px solid var(--color-accent);
 }
 
 h4 {
-    color: rgb(99, 192, 245);
+    color: var(--color-link);
     text-shadow: rgba(104, 182, 255, 0.15) 0px 0px 5px;
 }
 
@@ -85,21 +94,22 @@ h4 {
 }
 
 .modal-content {
-    border: 1px dashed #b5e853;
+    border: 1px dashed var(--color-accent);
 }
 
 .navbar-brand, .nav-link, body, p, h1, h2, h3, h4, td {
-    font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace !important;
+    font-family: var(--font-main) !important;
 }
 
 .navbar-brand {
-    font-weight: bold;
+    font-family: var(--font-logo) !important;
+    /* font-weight: bold; */
     text-shadow: 0 1px 1px rgba(0,0,0,0.1),0 0 5px rgba(181,232,83,0.1),0 0 10px rgba(181,232,83,0.1);
 }
 
-.navbar-brand::before {
+/* .navbar-brand::before {
     content: "./"
-}
+} */
 
 .nav-tabs {
     border-bottom: 1px solid #6c757d;
@@ -202,7 +212,7 @@ h4 {
 
 .challenge-solved {
     -webkit-text-stroke: 1px #222;
-    -webkit-text-fill-color: #b5e853;
+    -webkit-text-fill-color: var(--color-accent);
 }
 
 .challenge-unsolved {
@@ -218,7 +228,7 @@ h4 {
 }
 
 .scoreboard-name {
-    color: rgb(99, 192, 245);
+    color: var(--color-link);
     text-shadow: rgba(104, 182, 255, 0.15) 0px 0px 5px;
 }
 
