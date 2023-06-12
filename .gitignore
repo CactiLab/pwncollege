@@ -1,3 +1,4 @@
 data/
 *.pyc
 nginx-proxy/etc/nginx/vhost.d/default
+**/.DS_Store
