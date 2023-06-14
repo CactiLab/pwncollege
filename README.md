@@ -18,7 +18,7 @@ The associated challenge binary may be either global, which means all users will
 Clone the repository:
 
 ```sh
-git clone https://github.com/pwncollege/dojo /opt/academy
+git clone https://github.com/CactiLab/pwniot/ /opt/academy
 ```
 
 The only dependency to run the infrastructure is docker, which can be installed with:
