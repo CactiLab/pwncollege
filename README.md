@@ -18,7 +18,7 @@ The associated challenge binary may be either global, which means all users will
 Clone the repository:
 
 ```sh
-git clone https://github.com/pwncollege/dojo /opt/dojo
+git clone https://github.com/pwncollege/dojo /opt/academy
 ```
 
 The only dependency to run the infrastructure is docker, which can be installed with:
@@ -30,13 +30,14 @@ curl -fsSL https://get.docker.com | /bin/sh
 Now, build the container:
 
 ```sh
-docker build -t pwncollege/dojo .
+cd /opt/academy
+docker build -t pwniot.academy .
 ```
 
 Finally, run the infrastructure which will be hosted on domain `my.domain.college` with:
 
 ```sh
-docker run --privileged -d -v /opt/dojo:/opt/pwn.college -p 22:22 -p 80:80 -p 443:443 pwncollege/dojo
+docker run --privileged -d -v /opt/academy:/opt/pwn.college -p 22:22 -p 80:80 -p 443:443 --name pwniot.academy pwniot.academy
 ```
 
 > **Warning**
@@ -48,7 +49,7 @@ docker run --privileged -d -v /opt/dojo:/opt/pwn.college -p 22:22 -p 80:80 -p 44
 > This can be accomplished by replacing the bind mount with a docker volume for `data/docker`, which will use a native Linux mount. 
 > You can apply this solution using the following Docker command (notice the additional `-v`):
 > ```
-> docker run --privileged -d -v /opt/dojo:/opt/pwn.college -v dojo-data-docker:/opt/pwn.college/data/docker -p 22:22 -p 80:80 -p 443:443 pwncollege/dojo
+> docker run --privileged -d -v /opt/academy:/opt/pwn.college -v dojo-data-docker:/opt/pwn.college/data/docker -p 22:22 -p 80:80 -p 443:443 pwncollege/dojo
 > ```
 
 This will run the initial setup, including building the challenge docker image.
