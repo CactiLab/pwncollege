@@ -20,8 +20,8 @@ from ...models import Dojos, DojoUsers, DojoModules, DojoChallenges, DojoResourc
 from ...utils import DOJOS_DIR, get_current_container
 
 
-ID_REGEX = Regex(r"^[a-z0-9-]{1,32}$")
-UNIQUE_ID_REGEX = Regex(r"^[a-z0-9-~]{1,128}$")
+ID_REGEX = Regex(r"^[a-z0-9-_]{1,32}$")
+UNIQUE_ID_REGEX = Regex(r"^[a-z0-9-~_]{1,128}$")
 NAME_REGEX = Regex(r"^[\S ]{1,128}$")
 DATE = Use(datetime.datetime.fromisoformat)
 
