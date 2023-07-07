@@ -337,7 +337,11 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         gedit
         fortune
         zsh
+        qemu-user
+        qemu-user-static
+        binfmt-support
 EOF
+        # linux-headers-$(uname -r)
 
 ################################################################################
 

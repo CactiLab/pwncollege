@@ -95,6 +95,11 @@ def start_challenge(user, dojo_challenge, practice):
                     "bind",
                     propagation="shared",
                 ),
+                docker.types.Mount(
+                    "/proc/sys/fs/binfmt_misc",
+                    "/proc/sys/fs/binfmt_misc",
+                    "bind"
+                )
             ],
             devices=devices,
             network=None if internet else "user_firewall",
