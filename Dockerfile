@@ -5,6 +5,7 @@ ENV LC_CTYPE=C.UTF-8
 
 RUN apt-get update && \
     apt-get install -y \
+        apt-utils \
         build-essential \
         git \
         curl \
