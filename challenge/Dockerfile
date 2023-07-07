@@ -340,6 +340,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         qemu-user
         qemu-user-static
         binfmt-support
+        binutils-aarch64-linux-gnu
+        binutils-aarch64-linux-gnu-dbg
 EOF
         # linux-headers-$(uname -r)
 
