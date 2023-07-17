@@ -18,7 +18,8 @@ RUN apt-get update && \
         python-is-python3 \
         python3-dev \
         python3-pip \
-        openssh-server
+        openssh-server \
+        qemu-user
 
 RUN curl -fsSL https://get.docker.com | /bin/sh
 RUN echo '{ "data-root": "/opt/pwn.college/data/docker" }' > /etc/docker/daemon.json
@@ -31,6 +32,8 @@ RUN pip install \
 RUN docker buildx install
 
 RUN git clone --branch 3.4.0 https://github.com/CTFd/CTFd /opt/CTFd
+
+COPY etc/skel/.bashrc /etc/skel/.bashrc
 
 RUN useradd -m hacker
 RUN usermod -aG docker hacker

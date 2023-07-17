@@ -60,6 +60,7 @@ services:
       - ./data/homes:/var/homes:shared
       - ./data/challenges:/var/challenges:ro
       - ./data/dojos:/var/dojos
+      - ./script:/var/script
       - ./data/ssh_host_keys/ssh_known_hosts:/etc/ssh/ssh_known_hosts:ro
       - ./index.html:/var/index.html:ro
       - ./user_firewall.allowed:/var/user_firewall.allowed:ro
