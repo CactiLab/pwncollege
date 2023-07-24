@@ -116,7 +116,6 @@ EOF
 
 RUN mkdir -p /lib/modules/$(uname -r)/kernel/fs/
 COPY ["binfmt_misc.ko", "/lib/modules/$(uname -r)/kernel/fs/"]
-RUN insmod /lib/modules/$(uname -r)/kernel/fs/binfmt_misc.ko  
 
 ################################################################################
 
