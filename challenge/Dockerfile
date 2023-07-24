@@ -78,6 +78,7 @@ RUN awk '{$1=$1};1' >> /opt/linux/linux-5.4/.config <<EOF
     CONFIG_9P_FS_SECURITY=y
     CONFIG_BALLOON_COMPACTION=y
     CONFIG_CRYPTO_DEV_VIRTIO=y
+    CONFIG_BINFMT_MISC=y
     CONFIG_DEBUG_FS=y
     CONFIG_DEBUG_INFO=y
     CONFIG_DEBUG_INFO_BTF=y
@@ -112,6 +113,10 @@ RUN <<EOF
     ln -sf $PWD/arch/x86/boot/bzImage ../bzImage
     ln -sf $PWD/vmlinux ../vmlinux
 EOF
+
+RUN mkdir -p /lib/modules/$(uname -r)/kernel/fs/
+COPY binfmt_misc.ko /lib/modules/$(uname -r)/kernel/fs/
+RUN insmod /lib/modules/$(uname -r)/kernel/fs/binfmt_misc.ko  
 
 ################################################################################
 
@@ -393,6 +398,7 @@ SHELL ["/bin/bash", "-ceov", "pipefail"]
 ENV LC_CTYPE=C.UTF-8
 
 COPY --link --from=builder / /
+COPY --link --from=builder-kernel /opt/linux /opt/linux
 COPY --link --from=builder-code-server / /
 COPY --link --from=builder-desktop-base / /
 COPY --link --from=builder-tools-apt / /
