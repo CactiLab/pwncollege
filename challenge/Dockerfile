@@ -67,6 +67,7 @@ FROM builder as builder-kernel
 
 RUN <<EOF
     mkdir /opt/linux
+    mkdir -p /lib/modules/$(uname -r)/kernel/fs/
     wget -O - https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.gz | tar xzC /opt/linux
     cd /opt/linux/linux-5.4
     make defconfig
@@ -114,7 +115,6 @@ RUN <<EOF
     ln -sf $PWD/vmlinux ../vmlinux
 EOF
 
-RUN mkdir -p /lib/modules/$(uname -r)/kernel/fs/
 COPY ["binfmt_misc.ko", "/lib/modules/$(uname -r)/kernel/fs/"]
 
 ################################################################################
