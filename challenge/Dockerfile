@@ -1,6 +1,9 @@
 # syntax=docker/dockerfile:1
-
+FROM multiarch/qemu-user-static as register
+FROM multiarch/qemu-user-static:x86_64-aarch64 as qemu
 FROM ubuntu:20.04 as builder
+COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin
+RUN --from=register --reset -p yes
 
 SHELL ["/bin/bash", "-ceov", "pipefail"]
 
@@ -67,7 +70,6 @@ FROM builder as builder-kernel
 
 RUN <<EOF
     mkdir /opt/linux
-    mkdir -p /lib/modules/$(uname -r)/kernel/fs/
     wget -O - https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.4.tar.gz | tar xzC /opt/linux
     cd /opt/linux/linux-5.4
     make defconfig
@@ -114,8 +116,6 @@ RUN <<EOF
     ln -sf $PWD/arch/x86/boot/bzImage ../bzImage
     ln -sf $PWD/vmlinux ../vmlinux
 EOF
-
-COPY ["binfmt_misc.ko", "/lib/modules/$(uname -r)/kernel/fs/"]
 
 ################################################################################
 
@@ -397,7 +397,7 @@ SHELL ["/bin/bash", "-ceov", "pipefail"]
 ENV LC_CTYPE=C.UTF-8
 
 COPY --link --from=builder / /
-COPY --link --from=builder-kernel /opt/linux /opt/linux
+# COPY --link --from=builder-kernel /opt/linux /opt/linux
 COPY --link --from=builder-code-server / /
 COPY --link --from=builder-desktop-base / /
 COPY --link --from=builder-tools-apt / /
