@@ -31,7 +31,7 @@ case "$ACTION" in
     # HELP: history USER_ID [api]: view a user's bash history. Saves a snapshot to a text file in data/homes/history. If calling via the API, add "api" after the USER_ID.
     "history")
         PREFIX="data/homes"
-        if [ $2 = "api" ]; then
+        if [ "$2" = "api" ]; then
             PREFIX="/var/data/homes"
         fi
         HOME_PATH="$PREFIX/data/$1"
