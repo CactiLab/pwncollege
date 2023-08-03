@@ -28,6 +28,39 @@ case "$ACTION" in
             docker exec -it --user="$USER" "$CONTAINER" bash
         fi
         ;;
+    # HELP: history USER_ID [api]: view a user's bash history. Saves a snapshot to a text file in data/homes/history. If calling via the API, add "api" after the USER_ID.
+    "history")
+        PREFIX="data/homes"
+        if [ "$2" = "api" ]; then
+            PREFIX="/var/data/homes"
+        fi
+        HOME_PATH="$PREFIX/data/$1"
+        OUTPUT_PATH="$PREFIX/history/$1"
+        MOUNT_PATH="$PREFIX/history/$1_mount"
+        SNAPSHOT_TIME=$(TZ=America/New_York date +"%F-%R%Z")
+        SNAPSHOT_PATH="$OUTPUT_PATH/$1-snapshot-$SNAPSHOT_TIME"
+        if [ -f "$HOME_PATH" ]; then 
+            echo "Reading history from $HOME_PATH..."
+            mkdir -p $OUTPUT_PATH $MOUNT_PATH
+            mount -o loop $HOME_PATH $MOUNT_PATH
+            if [ -f "$MOUNT_PATH/.bash_history" ]; then
+                # Extract history file from filesystem
+                echo "Creating history snapshot: \"$SNAPSHOT_PATH\""
+                cp "$MOUNT_PATH/.bash_history" $SNAPSHOT_PATH
+                umount $MOUNT_PATH
+                rm -rf $MOUNT_PATH
+
+                # Convert UNIX timestamp to readable date
+                # echo "Formatting timestamps..."
+                sed -E -i "s/^#([0-9]+).*$/TZ=America\/New_York date -d @\1 '+#%F %T%Z'/e" $SNAPSHOT_PATH
+                echo "Done! View snapshot at $SNAPSHOT_PATH"
+            else
+                echo "ERROR: Failed to locate history file at $MOUNT_PATH/.bash_history on the user $1's filesystem."
+            fi
+        else
+            echo "Error: $1 doesn't have a filesystem saved to the database."
+        fi
+        ;;
 
     # HELP: compose ARGS: run a docker compose command with the config.env file loaded
     "compose")

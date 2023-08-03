@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
-
+FROM multiarch/qemu-user-static:x86_64-aarch64 as qemu
 FROM ubuntu:20.04 as builder
+COPY --from=qemu /usr/bin/qemu-aarch64-static /usr/bin
 
 SHELL ["/bin/bash", "-ceov", "pipefail"]
 
@@ -78,6 +79,7 @@ RUN awk '{$1=$1};1' >> /opt/linux/linux-5.4/.config <<EOF
     CONFIG_9P_FS_SECURITY=y
     CONFIG_BALLOON_COMPACTION=y
     CONFIG_CRYPTO_DEV_VIRTIO=y
+    CONFIG_BINFMT_MISC=y
     CONFIG_DEBUG_FS=y
     CONFIG_DEBUG_INFO=y
     CONFIG_DEBUG_INFO_BTF=y
@@ -337,7 +339,13 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         gedit
         fortune
         zsh
+        qemu-user
+        qemu-user-static
+        binfmt-support
+        binutils-aarch64-linux-gnu
+        binutils-aarch64-linux-gnu-dbg
 EOF
+        # linux-headers-$(uname -r)
 
 ################################################################################
 
@@ -387,6 +395,7 @@ SHELL ["/bin/bash", "-ceov", "pipefail"]
 ENV LC_CTYPE=C.UTF-8
 
 COPY --link --from=builder / /
+# COPY --link --from=builder-kernel /opt/linux /opt/linux
 COPY --link --from=builder-code-server / /
 COPY --link --from=builder-desktop-base / /
 COPY --link --from=builder-tools-apt / /

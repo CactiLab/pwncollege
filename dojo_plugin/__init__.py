@@ -129,6 +129,7 @@ def load(app):
 
     register_admin_plugin_menu_bar("Dojos", "/admin/dojos")
     register_admin_plugin_menu_bar("Desktops", "/admin/desktops")
+    register_admin_plugin_menu_bar("User History", "/admin/history")
 
     if os.path.basename(sys.argv[0]) != "manage.py":
         bootstrap()

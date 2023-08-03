@@ -1,4 +1,5 @@
 import os
+import pathlib
 
 from flask import request, Blueprint, render_template, abort
 from CTFd.utils.user import get_current_user, is_admin
@@ -25,6 +26,20 @@ def can_control(desktop_user):
         is_admin(),
         desktop_user.id == get_current_user().id
     ))
+
+def get_users_with_history():
+    return os.listdir("/var/homes/data")
+
+@desktop.route("/admin/history/<int:user_id>", methods=["GET"])
+@admins_only
+def get_history(user_id):
+    home = pathlib.Path(f"/var/data/homes/data/{user_id}")
+    if home.exists():
+        os.system(f"/var/script/dojo history 2 api")
+        lines = []
+        with open(f"/var/data/homes/history/{user_id}/{os.listdir(f'/var/data/homes/history/{user_id}')[-1]}") as hist:
+            lines = hist.readlines()
+        return render_template("admin_viewhistory.html", lines=lines, username=Users.query.filter_by(id=user_id).first().name)
 
 
 @desktop.route("/desktop")
@@ -77,3 +92,9 @@ def view_all_desktops():
     # active_desktops=True here would filter out only desktops that have been connected to, but that is too slow in
     # the current implementation...
     return render_template("admin_desktops.html", users=get_active_users())
+
+@desktop.route("/admin/history", methods=["GET"])
+@admins_only
+def view_all_users():
+    valid_users = Users.query.filter(Users.id.in_(get_users_with_history())).all()
+    return render_template("admin_history.html", users=valid_users)
