@@ -45,8 +45,8 @@ def bootstrap():
     from .utils import CHALLENGES_DIR, DOJOS_DIR, DATA_DIR, INDEX_HTML
     from .utils.dojo import load_dojo_dir
 
-    set_config("ctf_name", "pwn.college")
-    set_config("ctf_description", "pwn.college")
+    set_config("ctf_name", "PwnIoT")
+    set_config("ctf_description", "PwnIoT")
     set_config("user_mode", "users")
 
     set_config("challenge_visibility", "public")
