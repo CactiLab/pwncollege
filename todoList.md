@@ -1,15 +1,19 @@
 # To-do list of PwnIoT.Cacti.academy
 
+## Meeting 9/11/2023
+
 ## Functionality
 
-- [] (Deadline: ???, 2023; Elijah) Update the docker image to support Cortex-A, RISC-V (qemu-user), Cortex-M (qemu). All challenges regardless type will use the same image for now. 
-- [] (Deadline: ???, 2023; Elijah) Install Z shell.
-- [] (Deadline: ???, 2023; Dikshit) Make the website publicly accesible. 1. Get a public IP? 2. HTTPS certificate
-- [] (Deadline: ???, 2022; Developer) Add a function to track user input. Step 1. record user's input to the challenge; Step 2. Store user input to a history database table (user, user input). Eventual goal is to design an automatic help and hinting system based on user input.
-- [] (Deadline: ???, 2022; Developer) Design the defense-challenges database tables.
-- [] (Deadline: ???, 2022; Developer) Design the create-challenges database tables.
-- [] (Deadline: ???, 2022; Developer) Tutorials page: There should a tutorials page, where we can add documents, vedios, youtube links, slides etc.
-
+- [] (Deadline: 9/18/2023) Update the docker image to support RISC-V (qemu-user) and Cortex-M (qemu). Add test programs for these architectures. The image supports x86/x64/Cortex-A now.
+- [] (Deadline: 9/18/2023) Install ohmyzsh theme for the zsh shell. And change zsh as the default shell.
+- [] (Deadline: 10/7/2023) Make the website publicly accesible. Need to talk with CSE IT to figure out how it works. May need to (1) get a public IP? (2) HTTPS certificate.
+- [] (Deadline: 10/7/2023) Explore other deployment options. Considering 5,000 registered users world-wide and 1,000 active. 
+- [] (Deadline: 9/18/2023) We have added a "user history" button for "admin" to see each user's histroy input. However, there is a bug as the feature only works for user "elijah". Understand how this feature is implemented and fix the bug so the admin can see everyone's history.
+- [] (Deadline: 9/18/2023) Tutorials page: There should a tutorials page, where we can add documents, vedios, youtube links, slides etc.
+- [] (Deadline: 10/7/2023) Do a presentation on the database table of CTFd and PwnCollege.
+- [] (Deadline: 9/18/2023) Design the create-challenges database tables.
+- [] (Deadline: 9/18/2023) There are still many "pwncollege" and "CTFd" in the docs/xml/pages. Go through each occurrence and check if we can replace with Pwn.IoT. 
+- [] (Deadline: 9/18/2023) The forget password feature is not working. Fix it.
 
 ## GUI
 
@@ -20,6 +24,5 @@
 - [] (Deadline: ???, 2022; Developer) Create Challenges: Create Challenges page should give the users some kind of interaction method to design the challenges. After designing the challenge the users will submit it to the platform, our interaction method will update the challenge as CTF-Challenges or Defensive Challenges. The user who creates the challenge needs to solve the challenge first and submit an exploit on the platform. Lastly, there should be admin access to the submitted challenge source code and exploit to review those.
 - [] (Deadline: ???, 2022; Developer) User discussion page:** Create a discussion page or discord server like pwn college where users can discuss about the challenges.
 - [] (Deadline: ???, 2022; Developer) In-page discussion feature:
-- [] (Deadline: ???, 2022; Developer) Update the README page. Remove pwn.collge stuff. Explain we forked from them.
 
 ## For the todo-list of Challenges. Please refer to https://github.com/CactiLab/CTF-challenges
