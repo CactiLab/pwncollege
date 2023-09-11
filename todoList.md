@@ -4,15 +4,15 @@
 
 ## Functionality
 
-- [] (Deadline: 9/18/2023) Update the docker image to support RISC-V (qemu-user) and Cortex-M (qemu). Add test programs for these architectures. The image supports x86/x64/Cortex-A now.
-- [] (Deadline: 9/18/2023) Install ohmyzsh theme for the zsh shell. And change zsh as the default shell.
-- [] (Deadline: 10/7/2023) Make the website publicly accesible. Need to talk with CSE IT to figure out how it works. May need to (1) get a public IP? (2) HTTPS certificate.
-- [] (Deadline: 10/7/2023) Explore other deployment options. Considering 5,000 registered users world-wide and 1,000 active. 
-- [] (Deadline: 9/18/2023) We have added a "user history" button for "admin" to see each user's histroy input. However, there is a bug as the feature only works for user "elijah". Understand how this feature is implemented and fix the bug so the admin can see everyone's history.
-- [] (Deadline: 9/18/2023) Tutorials page: There should a tutorials page, where we can add documents, vedios, youtube links, slides etc.
+- [Wei] (Deadline: 9/18/2023) Update the docker image to support RISC-V (qemu-user) and Cortex-M (qemu). Add test programs for these architectures. The image supports x86/x64/Cortex-A now.
+- [Doniyor] (Deadline: 9/18/2023) Install ohmyzsh theme for the zsh shell. And change zsh as the default shell.
+- [Matt] (Deadline: 10/7/2023) Make the website publicly accesible. Need to talk with CSE IT to figure out how it works. May need to (1) get a public IP? (2) HTTPS certificate.
+- [Amelia] (Deadline: 10/7/2023) Explore other deployment options. Considering 5,000 registered users world-wide and 1,000 active. 
+- [Matt] (Deadline: 9/18/2023) We have added a "user history" button for "admin" to see each user's histroy input. However, there is a bug as the feature only works for user "elijah". Understand how this feature is implemented and fix the bug so the admin can see everyone's history.
+- [Doniyor] (Deadline: 9/18/2023) Tutorials page: There should a tutorials page, where we can add documents, vedios, youtube links, slides etc.
 - [] (Deadline: 10/7/2023) Do a presentation on the database table of CTFd and PwnCollege.
 - [] (Deadline: 9/18/2023) Design the create-challenges database tables.
-- [] (Deadline: 9/18/2023) There are still many "pwncollege" and "CTFd" in the docs/xml/pages. Go through each occurrence and check if we can replace with Pwn.IoT. 
+- [Amelia] (Deadline: 9/18/2023) There are still many "pwncollege" and "CTFd" in the docs/xml/pages. Go through each occurrence and check if we can replace with Pwn.IoT. 
 - [] (Deadline: 9/18/2023) The forget password feature is not working. Fix it.
 
 ## GUI
