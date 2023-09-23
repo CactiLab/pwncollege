@@ -64,6 +64,14 @@ EOF
 
 ################################################################################
 
+# Install OhMyZsh
+RUN <<EOF
+    apt-get install -yqq zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+EOF
+
+################################################################################
+
 FROM builder as builder-kernel
 
 RUN <<EOF
