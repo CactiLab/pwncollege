@@ -64,11 +64,8 @@ EOF
 
 ################################################################################
 
-# Install OhMyZsh
-RUN <<EOF
-    apt-get install -yqq zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-EOF
+#Install OhMyZsh
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 ################################################################################
 
