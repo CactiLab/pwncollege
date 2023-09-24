@@ -19,7 +19,9 @@ RUN apt-get update && \
         python3-dev \
         python3-pip \
         openssh-server \
-        qemu-user
+        qemu-user \
+        qemu-system-arm \
+        gcc-arm-none-eabi
 
 RUN curl -fsSL https://get.docker.com | /bin/sh
 RUN echo '{ "data-root": "/opt/pwn.college/data/docker" }' > /etc/docker/daemon.json
