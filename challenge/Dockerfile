@@ -64,7 +64,12 @@ EOF
 
 ################################################################################
 
-#Install OhMyZsh
+# Install Zsh and make it the default shell
+RUN apt-get update && \ 
+    apt-get install -y \ 
+    zsh \ && chsh -s /usr/bin/zsh root
+    
+# Install Oh My Zsh
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 ################################################################################
