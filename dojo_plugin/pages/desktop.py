@@ -35,7 +35,7 @@ def get_users_with_history():
 def get_history(user_id):
     home = pathlib.Path(f"/var/data/homes/data/{user_id}")
     if home.exists():
-        os.system(f"/var/script/dojo history 2 api")
+        os.system(f"/var/script/dojo history {user_id} api")
         lines = []
         with open(f"/var/data/homes/history/{user_id}/{os.listdir(f'/var/data/homes/history/{user_id}')[-1]}") as hist:
             lines = hist.readlines()
