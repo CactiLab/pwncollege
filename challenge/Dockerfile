@@ -421,6 +421,8 @@ RUN <<EOF
               /opt/pwn.college/bash \
               /opt/pwn.college/sh \
               /opt/pwn.college/vm/vm
+	
+	chsh -s /usr/bin/zsh hacker
 EOF
 
 RUN date > /opt/pwn.college/build
@@ -487,6 +489,8 @@ RUN <<EOF
               /opt/pwn.college/bash \
               /opt/pwn.college/sh \
               /opt/pwn.college/vm/vm
+	
+	chsh -s /usr/bin/zsh hacker
 EOF
 
 RUN date > /opt/pwn.college/build
