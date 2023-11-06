@@ -10,7 +10,7 @@
 - [Amelia] (Deadline: 10/7/2023) Explore other deployment options. Considering 5,000 registered users world-wide and 1,000 active. 
 - [Matt] (Deadline: 9/18/2023) We have added a "user history" button for "admin" to see each user's histroy input. However, there is a bug as the feature only works for user "elijah". Understand how this feature is implemented and fix the bug so the admin can see everyone's history.
 - [Doniyor] (Deadline: 9/18/2023) Tutorials page: There should a tutorials page, where we can add documents, vedios, youtube links, slides etc.
-- [] (Deadline: 10/7/2023) Do a presentation on the database table of CTFd and PwnCollege.
+- [Wei] (Deadline: 10/7/2023) Do a presentation on the database table of CTFd and PwnCollege.
 - [] (Deadline: 9/18/2023) Design the create-challenges database tables.
 - [Amelia] (Deadline: 9/18/2023) There are still many "pwncollege" and "CTFd" in the docs/xml/pages. Go through each occurrence and check if we can replace with Pwn.IoT. 
 - [] (Deadline: 9/18/2023) The forget password feature is not working. Fix it.
