@@ -37,6 +37,14 @@ RUN git clone --branch 3.4.0 https://github.com/CTFd/CTFd /opt/CTFd
 
 COPY etc/skel/.bashrc /etc/skel/.bashrc
 
+# OhMyZsh
+
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+RUN cp /root/.zshrc /etc/skel/.zshrc
+RUN cp -r /root/.oh-my-zsh /etc/skel/.oh-my-zsh
+
+
+
 RUN useradd -m hacker
 RUN usermod -aG docker hacker
 RUN mkdir -p /home/hacker/.docker
