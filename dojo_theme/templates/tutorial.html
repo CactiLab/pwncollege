@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% from "macros/widgets.html" import tutorial_card %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>Tutorials</h1>
+    </div>
+</div>
+<div class="container">
+
+    <h2>Uploaded PDFs</h2>
+    <ul class="card-list">
+        {% for file in files %}
+            {{ tutorial_card(file.name, file.url, file.description, "pdf", file.name) }}
+        {% endfor %}
+    </ul>
+
+    <h2>Submitted Links</h2>
+    <ul class="card-list">
+        {% for link in links %}
+            {{ tutorial_card(link.name, link.link, link.description, "link", link.identifier) }}
+        {% endfor %}
+    </ul>
+
+</div>
+
+<div class="container">
+{% if is_admin() %}
+    <h2>Uploaded PDFs</h2>
+    <!-- Upload PDF Form -->
+    <form action={{ url_for("pwncollege_tutorial.upload_pdf") }}  method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".pdf">
+        <input type="text" name="description" placeholder="Description for the PDF">
+        <button type="submit">Upload PDF</button>
+    </form>
+
+    <h2>Submitted Links</h2>
+    <!-- Submit Link Form -->
+    <form action={{ url_for("pwncollege_tutorial.submit_link") }} method="post">
+        <input type="link" name="link" placeholder="Enter link">
+        <input type="text" name="description" placeholder="Description for the link">
+        <button type="submit">Submit Link</button>
+    </form>
+{% endif %}
+
+</div>
+{% endblock %}
+
