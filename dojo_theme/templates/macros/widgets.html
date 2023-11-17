@@ -16,6 +16,28 @@
 </li>
 {% endmacro %}
 
+{% macro tutorial_card(title, url, text, type, identifier) -%}
+    <div>
+        <a class="text-decoration-none" href="{{ url }}" style="text-decoration: none;">
+        <div class="card card-small">
+            <div class="card-body">
+              {% if title %}<h4 class="card-title">{{ title }}</h4>{% endif %}
+              {% if text %}<p class="card-text">{{ text }}</p>{% endif %}
+            </div>
+        </div>
+        </a>
+
+        {% if is_admin() %}
+        <!-- Delete Button: Only Visible for @admin -->
+        <button
+            onclick="event.stopPropagation(); window.location.href='tutorials/delete/{{ type }}/{{ identifier }}';"
+            class="button">
+            Delete
+        </button>
+        {% endif %}
+    </div>
+{%- endmacro %}
+
 {% macro card(url, title=None, text=None, custom=False) -%}
   <a class="text-decoration-none" href="{{ url }}">
     <li class="card card-small">
