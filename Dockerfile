@@ -21,7 +21,8 @@ RUN apt-get update && \
         openssh-server \
         qemu-user \
         qemu-system-arm \
-        gcc-arm-none-eabi
+        gcc-arm-none-eabi \
+        zsh
 
 RUN curl -fsSL https://get.docker.com | /bin/sh
 RUN echo '{ "data-root": "/opt/pwn.college/data/docker" }' > /etc/docker/daemon.json
