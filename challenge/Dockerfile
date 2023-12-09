@@ -60,6 +60,9 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
         unzip
         upx-ucl
         wget
+	qemu-user 
+        qemu-system-arm 
+        gcc-arm-none-eabi 
 EOF
 
 ################################################################################
